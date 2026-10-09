@@ -1,28 +1,28 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,500;1,500&display=swap');
-*{
+
+* {
     margin: 0;
     padding: 0;
     font-family: "Roboto", sans-serif;
 }
 
-body{
+body {
     background-color: black;
     color: white;
 }
 
-.left{
+.left {
     width: 25vw;
     padding: 10px;
 }
 
-.right{
+.right {
     width: 75vw;
 }
 
-.home{
-}
+.home {}
 
-.home ul li{
+.home ul li {
     display: flex;
     gap: 15px;
     width: 14px;
@@ -30,7 +30,8 @@ body{
     padding-top: 14px;
     font-weight: bold;
 }
-.heading{
+
+.heading {
     display: flex;
     gap: 15px;
     width: 100%;
@@ -41,65 +42,83 @@ body{
     font-size: 13px;
 }
 
-.heading img{
+.heading img {
     width: 30px;
 }
 
-.library{
+.library {
     min-height: 80vh;
     position: relative;
 }
 
-.footer{
+.footer {
     display: flex;
     font-size: 10px;
     color: gray;
     gap: 13px;
     position: absolute;
     bottom: 0;
+    padding: 10px 0;
 }
 
-.footer a{
+.footer a {
     color: gray;
 }
 
-.right{
+.right {
     margin: 16px 0;
 }
 
-.header{
+.header {
     display: flex;
     justify-content: space-between;
-    background-color: rgb(34,34,34);
+    background-color: rgb(34, 34, 34);
 }
 
-.header > *{
+.header>* {
     padding: 20px;
 }
 
-.spotifyPlaylists{
+.spotifyPlaylists {
     padding: 16px;
 }
 
-.cardContainer{
+.cardContainer {
     margin: 30px;
     display: flex;
     gap: 10px;
     flex-wrap: wrap;
 }
 
-.card{
+.card {
     width: 200px;
     padding: 10px;
     border-radius: 5px;
     background-color: #252525;
+    position: relative;
 }
 
-.card > *{
+.card>* {
     padding-top: 10px;
 }
 
-.card img{
+.card img {
     width: 100%;
     object-fit: contain;
+}
+
+.play {
+    width: 28px;
+    height: 28px;
+    background-color: #1fdf64;
+    border-radius: 50%;
+    padding: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 168px;
+    right: 17px;
+    opacity: 0;
+    transition: all 1s ease-out;
 }
