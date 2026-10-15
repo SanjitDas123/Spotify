@@ -21,21 +21,22 @@ async function getSongs() {
 async function main() {
     // Get the list of all the songs
     let songs = await getSongs()
-    console.log(songs)
 
+    //Show all the songs in the playlist
     let songUL = document.querySelector(".songList").getElementsByTagName("ul")[0]
     for (const song of songs) {
-        songUL.innerHTML = songUL.innerHTML + `<li>${song.replaceAll("%20", " ").replaceAll("%26", "&")}</li>`
+        songUL.innerHTML = songUL.innerHTML + `<li><img class="invert" src="music.svg" alt="">
+                            <div class="info">
+                                <div> ${song.replaceAll("%20", " ").replaceAll("%26", "&")} </div>
+                                <div>Harry</div>
+                            </div>
+                            <div class="playnow">
+                                <span>Play Now</span>
+                                <img class="invert" src="play.svg" alt="">
+                            </div> </li>`;
     }
 
-    // play the first song
-    var audio = new Audio(songs[0]);
-    audio.play();
 
-    audio.addEventListener("loadeddata", () => {
-        console.log(audio.duration, audio.currentSrc, audio.currentTime)
-        // The duration variable now holds the duration (in seconds) of the audio clip
-    });
 }
 
 main()
