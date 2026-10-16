@@ -1,5 +1,5 @@
 console.log('Lets write JavaScript');
-
+let currentSong = new Audio();
 
 async function getSongs() {
 
@@ -18,7 +18,15 @@ async function getSongs() {
     return songs
 }
 
+const playMusic = (track)=>{
+    // let audio = new Audio("/songs/" + track)
+    currentSong.src = "/songs/" + track
+    currentSong.play()
+}
+
 async function main() {
+
+    
     // Get the list of all the songs
     let songs = await getSongs()
 
@@ -27,7 +35,7 @@ async function main() {
     for (const song of songs) {
         songUL.innerHTML = songUL.innerHTML + `<li><img class="invert" src="music.svg" alt="">
                             <div class="info">
-                                <div> ${song.replaceAll("%20", " ").replaceAll("%26", "&")} </div>
+                                <div> ${song.replaceAll("%20", " ")}</div>
                                 <div>Harry</div>
                             </div>
                             <div class="playnow">
@@ -35,6 +43,14 @@ async function main() {
                                 <img class="invert" src="play.svg" alt="">
                             </div> </li>`;
     }
+
+    // Attach an event listener to each song 
+    Array.from(document.querySelector(".songList").getElementsByTagName("li")).forEach((e)=>{
+        e.addEventListener("click",element=>{
+            console.log(e.querySelector(".info").firstElementChild.innerHTML)
+            playMusic(e.querySelector(".info").firstElementChild.innerHTML.trim())
+        })
+    })
 
 
 }
