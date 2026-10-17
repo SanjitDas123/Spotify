@@ -18,10 +18,10 @@ async function getSongs() {
     return songs
 }
 
-const playMusic = (track)=>{
-    // let audio = new Audio("/songs/" + track)
+const playMusic = (track) => {
     currentSong.src = "/songs/" + track
     currentSong.play()
+    play.src = "pause.svg"
 }
 
 async function main() {
@@ -52,6 +52,17 @@ async function main() {
         })
     })
 
+    // Attach an event listener to play, next and previous
+    play.addEventListener("click", ()=>{
+        if(currentSong.paused){
+            currentSong.play()
+            play.src = "pause.svg"
+        }
+        else{
+            currentSong.pause()
+            play.src = "play.svg"
+        }
+    })
 
 }
 
