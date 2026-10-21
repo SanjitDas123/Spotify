@@ -183,6 +183,10 @@ body {
     margin-bottom: 44px;
 }
 
+.hamburgar{
+    display: none;
+}
+
 .songList ul{
     padding: 0 12px;
 }
@@ -251,4 +255,27 @@ body {
 .abovebar{
     display: flex;
     justify-content: space-between;
+}
+
+@media (max-width: 1400px) {
+    .left{
+        background-color: red;
+        position: absolute;
+        left: -100%;
+        transition: all .3s;
+        z-index: 1;
+        width: 233px;
+    }
+    
+    .right{
+        width: 100vw;
+    }
+    .playbar{
+        width: 95vw;
+    }
+
+    .hamburgar{
+        display: block;
+    }
+
 }
