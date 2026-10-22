@@ -183,8 +183,15 @@ body {
     margin-bottom: 44px;
 }
 
-.hamburgar{
+.hamburger{
     display: none;
+}
+
+.hamburgerContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 14px;
 }
 
 .songList ul{
@@ -259,12 +266,18 @@ body {
 
 @media (max-width: 1400px) {
     .left{
-        background-color: red;
         position: absolute;
         left: -100%;
         transition: all .3s;
         z-index: 1;
-        width: 233px;
+        width: 433px;
+        background-color: black;
+    }
+
+    .left .close img{
+        position: absolute;
+        right: 31px;
+        top: 25px;
     }
     
     .right{
@@ -274,7 +287,7 @@ body {
         width: 95vw;
     }
 
-    .hamburgar{
+    .hamburger{
         display: block;
     }
 
