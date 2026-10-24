@@ -168,7 +168,7 @@ body {
     width: 90%;
     padding: 12px;
     width: 70vw;
-    height: 40px;
+    min-height: 40px;
 }
 
 .songbuttons{
@@ -262,6 +262,7 @@ body {
 .abovebar{
     display: flex;
     justify-content: space-between;
+    margin: 20px 0;
 }
 
 @media (max-width: 1400px) {
@@ -274,21 +275,35 @@ body {
         background-color: black;
     }
 
-    .left .close img{
+    .left .close{
         position: absolute;
         right: 31px;
         top: 25px;
+        width: 29px;
     }
     
     .right{
         width: 100vw;
     }
     .playbar{
-        width: 95vw;
+        width: calc(100vw - 60px);
+    }
+
+    .seekbar{
+        width: calc(100vw - 70px);
     }
 
     .hamburger{
         display: block;
+    }
+
+    .card{
+        width: 90vw;
+    }
+
+    .cardContainer{
+        margin: 0;
+        justify-content: center;
     }
 
 }
