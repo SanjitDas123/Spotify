@@ -6,6 +6,10 @@
     font-family: "Roboto", sans-serif;
 }
 
+.close{
+    display: none;
+}
+
 body {
     background-color: black;
     color: white;
@@ -297,6 +301,10 @@ body {
         display: block;
     }
 
+    .right{
+        margin: 0;
+    }
+
     .card{
         width: 90vw;
     }
@@ -304,6 +312,16 @@ body {
     .cardContainer{
         margin: 0;
         justify-content: center;
+    }
+    
+    .close{
+        display: block;
+    }
+
+    .abovebar{
+        flex-direction: column;
+        gap: 23px;
+        align-items: center;
     }
 
 }
