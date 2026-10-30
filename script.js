@@ -65,8 +65,8 @@ async function main() {
     // Attach an event listener to each song 
     Array.from(document.querySelector(".songList").getElementsByTagName("li")).forEach((e)=>{
         e.addEventListener("click",element=>{
-            console.log(e.querySelector(".info").firstElementChild.innerHTML)
             playMusic(e.querySelector(".info").firstElementChild.innerHTML.trim())
+        
         })
     })
 
@@ -110,7 +110,6 @@ async function main() {
     previous.addEventListener("click", ()=>{
         currentSong.pause()
         console.log("Previous clicked")
-        console.log(currentSong)
         let index = songs.indexOf(currentSong.src.split("/").slice(-1) [0])
         if((index-1) >= 0){
             playMusic(songs[index-1])
@@ -126,6 +125,13 @@ async function main() {
         if((index+1) < songs.length){
             playMusic(songs[index+1])
         }
+    })
+
+    // Add an event to volume
+    document.querySelector(".range").getElementsByTagName("input")[0].addEventListener("change", (e)=>
+    {
+        console.log("Setting volume to", e.target.value, "/100")
+        currentSong.volume = parseInt(e.target.value)/100
     })
     
 
