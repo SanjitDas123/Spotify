@@ -24,33 +24,17 @@ async function getSongs(folder) {
     let div = document.createElement("div")
     div.innerHTML = response;
     let as = div.getElementsByTagName("a")
-    let songs = []
+    songs = []
     for (let index = 0; index < as.length; index++) {
         const element = as[index];
         if (element.href.endsWith(".mp3")) {
             songs.push(element.href.split(`/${folder}/`)[1])
         }
     }
-    return songs
-}
-
-const playMusic = (track, pause=false) => {
-    currentSong.src = `/${currFolder}/` + track
-    if(!pause){
-        currentSong.play()
-        play.src = "pause.svg"
-    }
-    document.querySelector(".songinfo").innerHTML = decodeURI(track)
-    document.querySelector(".songtime").innerHTML = "00:00 / 00:00"
-}
-
-async function main() {
-    // Get the list of all the songs
-    songs = await getSongs("songs/ncs")
-    playMusic(songs[0], true)
-
+    
     //Show all the songs in the playlist
     let songUL = document.querySelector(".songList").getElementsByTagName("ul")[0]
+    songUL.innerHTML = ""
     for (const song of songs) {
         songUL.innerHTML = songUL.innerHTML + `<li><img class="invert" src="music.svg" alt="">
                             <div class="info">
@@ -70,6 +54,24 @@ async function main() {
         
         })
     })
+}
+
+const playMusic = (track, pause=false) => {
+    currentSong.src = `/${currFolder}/` + track
+    if(!pause){
+        currentSong.play()
+        play.src = "pause.svg"
+    }
+    document.querySelector(".songinfo").innerHTML = decodeURI(track)
+    document.querySelector(".songtime").innerHTML = "00:00 / 00:00"
+}
+
+async function main() {
+    // Get the list of all the songs
+    await getSongs("songs/ncs")
+    playMusic(songs[0], true)
+
+    
 
     // Attach an event listener to play, next and previous
     play.addEventListener("click", ()=>{
@@ -85,7 +87,6 @@ async function main() {
 
     // Listen for timeupdate event
     currentSong.addEventListener("timeupdate", ()=>{
-        console.log(currentSong.currentTime, currentSong.duration);
         document.querySelector(".songtime").innerHTML = `${secondsToMinutesSeconds(currentSong.currentTime)} / ${secondsToMinutesSeconds(currentSong.duration)}`
         document.querySelector(".circle").style.left = (currentSong.currentTime/ currentSong.duration) * 100 + "%";
     })
@@ -135,7 +136,15 @@ async function main() {
         currentSong.volume = parseInt(e.target.value)/100
     })
     
-    
+    // Load the playlist whenever card is clicked
+    Array.from(document.getElementsByClassName("card")).forEach(e=>{
+        e.addEventListener("click", async item=>{
+            songs = await getSongs(`songs/${item.currentTarget.dataset.folder}`)
+            
+        })
+    })
+
+
 
 }
 
