@@ -304,6 +304,9 @@ body {
     gap: 12px;
     cursor: pointer;
 }
+.range input{
+    cursor: pointer;
+}
 
 .abovebar{
     display: flex;

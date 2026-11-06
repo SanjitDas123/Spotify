@@ -69,6 +69,7 @@ const playMusic = (track, pause=false) => {
 }
 
 async function displayAlbums() {
+    console.log("displaying albums")
     let a = await fetch(`http://127.0.0.1:5500/songs/`)
     let response = await a.text();
     let div = document.createElement("div")
@@ -104,6 +105,7 @@ async function displayAlbums() {
         // Load the playlist whenever card is clicked
     Array.from(document.getElementsByClassName("card")).forEach(e=>{
         e.addEventListener("click", async item=>{
+            console.log("Fetching Songs")
             songs = await getSongs(`songs/${item.currentTarget.dataset.folder}`)
             
         })
@@ -181,6 +183,21 @@ async function main() {
         console.log("Setting volume to", e.target.value, "/100")
         currentSong.volume = parseInt(e.target.value)/100
     })
+
+    // Add event listener to mute the track 
+    document.querySelector(".volume>img").addEventListener("click", e=>{
+        if(e.target.src.includes("volume.svg")){
+            e.target.src = e.target.src.replace("volume.svg", "mute.svg")
+            currentSong.volume = 0;
+            document.querySelector(".range").getElementsByTagName("input")[0].value = 0;
+        }
+        else{
+            e.target.src = e.target.src.replace("mute.svg", "volume.svg")
+            currentSong.volume = .10;
+            document.querySelector(".range").getElementsByTagName("input")[0].value = 10;
+        }
+
+    }) 
     
 
 
