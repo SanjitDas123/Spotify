@@ -365,7 +365,7 @@ body {
     }
 
     .card{
-        width: 44vw;
+        width: 55vw;
     }
 
     .cardContainer{
@@ -383,10 +383,14 @@ body {
         align-items: center;
     }
 
+    .cardContainer {
+        max-height: 50vh;
+    }
+
 }
 
-@media (max-width: 400px) {
+@media (max-width: 500px) {
     .card{
-        width: 84vw;
+        width: auto;
     }
 }
