@@ -386,6 +386,7 @@ body {
     .cardContainer{
         max-height: unset;
         overflow-y: unset;
+        margin-bottom: 35vh;
     }
 
     .playbar{

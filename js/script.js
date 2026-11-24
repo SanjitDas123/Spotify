@@ -184,6 +184,9 @@ async function main() {
     {
         console.log("Setting volume to", e.target.value, "/100")
         currentSong.volume = parseInt(e.target.value)/100
+        if (currentSong.volume >0){
+            document.querySelector(".volume>img").src = document.querySelector(".volume>img").src.replace("mute.svg", "volume.svg")
+        }
     })
 
     // Add event listener to mute the track 
