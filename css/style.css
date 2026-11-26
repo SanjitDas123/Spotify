@@ -137,7 +137,7 @@ body {
     align-items: center;
     justify-content: center;
     position: absolute;
-    top: 168px;
+    bottom: 88px;
     right: 17px;
     opacity: var(--a);
     transition: all 1s ease-out;
@@ -179,6 +179,9 @@ body {
 
 
 .playbar{
+    display: flex;
+    justify-content: center;
+    align-items: center;
     position: fixed;
     bottom: 30px;
     filter: invert(1);
@@ -258,7 +261,7 @@ body {
     background-color: black;
     border-radius: 10px;
     position: absolute;
-    bottom: 0;
+    bottom: 8px;
     margin: 6px;
     cursor: pointer;
 }
@@ -324,6 +327,9 @@ body {
         width: 373px;
         background-color: black;
         padding: 0;
+        height: 100vh;
+        position: fixed;
+        top: 0;
     }
 
     .songinfo, .songtime{
@@ -408,10 +414,20 @@ body {
         margin: 0 6px;
     }
 
+    .header{
+        padding: 7px;
+    }
 
     .spotifyPlaylists h1{
         padding: 4px;
     }
 
+    .library{
+        height: 85vh;
+    }
+
+    .left{
+        width: 100vw;
+    }
     
 }
